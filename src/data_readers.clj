@@ -1,2 +1,2 @@
-{t clojure-dev.core/t*
- p clojure-dev.core/p*}
+{t tapp.core/t*
+ p tapp.core/p*}

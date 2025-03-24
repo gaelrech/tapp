@@ -1,4 +1,4 @@
-(ns clojure-dev.printer
+(ns tapp.printer
   (:require [puget.color.ansi :as color]
             [puget.printer :as puget]))
 

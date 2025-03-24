@@ -7,3 +7,5 @@
 .calva
 .portal
 .nrepl-port
+target
+pom*

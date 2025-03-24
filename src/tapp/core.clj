@@ -1,8 +1,8 @@
-(ns clojure-dev.core
+(ns tapp.core
   (:require [cats.core :as m]
             [cats.monad.state :as state]
             [clj-stacktrace.core :as stacktrace]
-            [clojure-dev.printer :as printer]
+            [tapp.printer :as printer]
             [portal.viewer]))
 
 (defn meta-able?
@@ -20,8 +20,7 @@
 
 (defmacro p
   [form]
-  `(let [
-         call-info# (call-information)
+  `(let [call-info# (call-information)
          metadata# {:dev/code (portal.viewer/pprint '~form)
                     :dev/fn   (:fn call-info#)
                     :dev/line (:line call-info#)
