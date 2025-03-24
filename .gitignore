@@ -1,0 +1,9 @@
+.cpcache
+/.clj-kondo/*
+!/.clj-kondo/config.edn
+/.lsp/*
+!/.lsp/config.edn
+.DS_Store
+.calva
+.portal
+.nrepl-port
