@@ -51,4 +51,4 @@
 
 (defn t*
   [form]
-  `(p ~form))
+  `(t ~form))
