@@ -1,8 +1,9 @@
-(defproject org.clojars.gaelrech/tapp "0.0.3"
+(defproject org.clojars.gaelrech/tapp "0.0.4"
   :description "Debugging tools for general usage"
   :url "https://github.com/gaelrech/tapp"
   :license {:name "The MIT License"
             :url "http://opensource.org/licenses/MIT"}
+  :test-paths ["test"]
   :dependencies [[org.clojure/clojure "1.12.0"]
                  [funcool/cats "2.4.2"]
                  [djblue/portal "0.58.5"]
