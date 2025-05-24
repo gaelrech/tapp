@@ -30,10 +30,10 @@
 
 (defmacro call-information
   []
-  `(->> (.getStackTrace (Thread/currentThread))
-        stacktrace/parse-trace-elems
-        (filterv #(true? (:clojure %)))
-        first))
+  (->> (.getStackTrace (RuntimeException. "dummy"))
+       stacktrace/parse-trace-elems
+       (filterv #(true? (:clojure %)))
+       first))
 
 (defmacro tap
   [form metadata]
@@ -47,10 +47,10 @@
   [form tap-fn]
   `(let [tap-fn# ~tap-fn
          call-info# (call-information)
-         metadata# {:dev/code (portal.viewer/pprint '~form)
+         metadata# {:dev/code '~form
                     :dev/fn   (:fn call-info#)
                     :dev/line (:line call-info#)
                     :dev/ns   (:ns call-info#)}]
      (if (state/state? ~form)
-       (m/fmap #(tap-fn# ~form metadata#) ~form)
+       (m/fmap #(tap-fn# % metadata#) ~form)
        (tap-fn# ~form metadata#))))
