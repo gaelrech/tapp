@@ -1,8 +1,13 @@
 (ns tapp.core
   (:require [tapp.internals.wrappers :as wrappers]))
+
 (defmacro p
-  [form]
-  `(wrappers/wrap ~form wrappers/print*))
+  ([form]
+   `(wrappers/wrap ~form wrappers/print*))
+  ([x y] ;handle for thread-first and thread-last
+   (cond
+     (meta x) `(wrappers/wrap ~x wrappers/print*)
+     (meta y) `(wrappers/wrap ~y wrappers/print*))))
 
 (defmacro t
   [form]
