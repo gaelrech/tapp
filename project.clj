@@ -1,4 +1,4 @@
-(defproject org.clojars.gaelrech/tapp "0.0.6"
+(defproject org.clojars.gaelrech/tapp "0.0.7"
   :description "Debugging tools for general usage"
   :url "https://github.com/gaelrech/tapp"
   :license {:name "The MIT License"

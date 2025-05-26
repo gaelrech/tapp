@@ -30,10 +30,10 @@
 
 (defmacro call-information
   []
-  (->> (.getStackTrace (RuntimeException. "dummy"))
-       stacktrace/parse-trace-elems
-       (filterv #(true? (:clojure %)))
-       first))
+  `(->> (.getStackTrace (RuntimeException. "dummy"))
+        stacktrace/parse-trace-elems
+        (filterv #(true? (:clojure %)))
+        first))
 
 (defmacro tap
   [form metadata]
