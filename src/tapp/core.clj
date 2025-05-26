@@ -1,6 +1,5 @@
 (ns tapp.core
-  (:require [tapp.internals.wrappers :as wrappers]
-            [portal.viewer]))
+  (:require [tapp.internals.wrappers :as wrappers]))
 (defmacro p
   [form]
   `(wrappers/wrap ~form wrappers/print*))
