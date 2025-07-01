@@ -20,5 +20,5 @@ jobs:
         CLOJARS_USERNAME: ${{ secrets.clojars_username }}
         CLOJARS_PASSWORD: ${{ secrets.clojars_password }}
       run: |
-        lein release
+        lein release :patch
         lein deploy clojars
