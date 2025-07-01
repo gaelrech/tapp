@@ -4,12 +4,14 @@
   :license {:name "The MIT License"
             :url "http://opensource.org/licenses/MIT"}
   :test-paths ["test"]
-  :aliases {"bump-version" ["change" "version" "leiningen.release/bump-version"]}
-  :release-tasks [["bump-version" "release"]
-                  ["vcs" "commit" "Release %s"]
+  :release-tasks [["change" "version" "leiningen.release/bump-version" "release"]
+                  ["vcs" "commit"]
                   ["vcs" "tag" "v" "--no-sign"]
-                  ["bump-version"]
-                  ["vcs" "commit" "Begin %s"]]
+                  ["deploy"]
+                  ["change" "version" "leiningen.release/bump-version"]
+                  ["change" "version" "leiningen.release/bump-version"]
+                  ["vcs" "commit"]
+                  ["vcs" "push"]]
   :deploy-repositories [["clojars" {:url "https://clojars.org/repo"
                                     :sign-releases false
                                     :username :env/clojars_username
