@@ -46,11 +46,12 @@
 (defmacro wrap
   [form tap-fn]
   `(let [tap-fn# ~tap-fn
+         form# (try ~form (catch Exception e# e#))
          call-info# (call-information)
          metadata# {:dev/code '~form
                     :dev/fn   (:fn call-info#)
                     :dev/line (:line call-info#)
                     :dev/ns   (:ns call-info#)}]
-     (if (state/state? ~form)
-       (m/fmap #(tap-fn# % metadata#) ~form)
-       (tap-fn# ~form metadata#))))
+     (if (state/state? form#)
+       (m/fmap #(tap-fn# % metadata#) form#)
+       (tap-fn# form# metadata#))))
