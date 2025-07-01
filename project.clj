@@ -4,6 +4,8 @@
   :license {:name "The MIT License"
             :url "http://opensource.org/licenses/MIT"}
   :test-paths ["test"]
+  :deploy-repositories [["clojars" {:url "https://clojars.org/repo"
+                                    :sign-releases false}]]
   :dependencies [[org.clojure/clojure "1.12.0"]
                  [funcool/cats "2.4.2"]
                  [djblue/portal "0.58.5"]

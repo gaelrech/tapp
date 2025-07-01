@@ -1,2 +1,2 @@
-{t tapp.core/t*
- p tapp.core/p*}
+{t tapp/t*
+ p tapp/p*}
