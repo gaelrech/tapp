@@ -21,9 +21,11 @@ print:
 At its core, its the same idea. The main differences are mainly the following:
 
 1. Support for State monads
+
 To facilitate usage of tapp in state-flow tests, it detects if the form associated to the `#p` returns a State monad and, if it does, it will correctly envelop the printing to the monadic structures.
 
 2. Exception printing
+
 If the `#p` is associated to a form that throws an exception, in Hashp it will not print anything. In Tapp, it will print the exception itself and then return the exception to the program flow as expected.
 
 ## Installation
