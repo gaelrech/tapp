@@ -5,6 +5,19 @@
             [puget.color.ansi :as color]
             [puget.printer :as puget]))
 
+(defonce ^:private tapper (atom []))
+(defonce ^:private tapper-max-size 50)
+
+(defn ^:private tapper-push
+  [m]
+  (when (>= (count @tapper) tapper-max-size)
+    (swap! tapper drop-last))
+  (swap! tapper #(cons m %)))
+
+(defn tapper-get
+  []
+  @tapper)
+
 (def print-opts
   (merge puget/*options*
          {:print-color    true
@@ -35,13 +48,10 @@
         (filterv #(true? (:clojure %)))
         first))
 
-(defmacro tap
+(defn tap
   [form metadata]
-  `(do
-     (if (meta-able? ~form)
-       (tap> (with-meta ~form ~metadata))
-       (tap> (with-meta [:portal.viewer/pprint ~form] (merge ~metadata {:portal.viewer/default :portal.viewer/hiccup}))))
-     ~form))
+  (tapper-push (merge metadata {:dev/result form}))
+  (print* form metadata))
 
 (defmacro wrap
   [form tap-fn]
